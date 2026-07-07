@@ -56,7 +56,7 @@ spec:
             status: Succeeded
           - completedTimestamp: "2020-03-17T20:18:45Z"
             description: https://github.com/jenkins-x-labs/jxl.git
-            name: Git Source Meta Jenkins X Labs Jxl Pr 83 P Cbl89 6cfh7
+            name: Git Source Meta JayeX Labs Jxl Pr 83 P Cbl89 6cfh7
             startedTimestamp: "2020-03-17T20:18:40Z"
             status: Succeeded
           - completedTimestamp: "2020-03-17T20:18:46Z"
@@ -96,7 +96,7 @@ spec:
             status: Succeeded
           - completedTimestamp: "2020-03-17T20:19:03Z"
             description: https://github.com/jenkins-x-labs/jxl.git
-            name: Git Source Jenkins X Labs Jxl Pr 83 Pr Bui 87jrw Tc66g
+            name: Git Source JayeX Labs Jxl Pr 83 Pr Bui 87jrw Tc66g
             startedTimestamp: "2020-03-17T20:18:58Z"
             status: Succeeded
           - completedTimestamp: "2020-03-17T20:19:05Z"

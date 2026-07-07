@@ -1,8 +1,8 @@
 # slack 
 
-The Slack app for Jenkins X provides integration with Jenkins X and Slack
+The Slack app for JayeX provides integration with JayeX and Slack
 
-This has been developed and tested so far using pipelines triggered by commits from GitHub and deployed using Jenkins X on Google Container Engine.
+This has been developed and tested so far using pipelines triggered by commits from GitHub and deployed using JayeX on Google Container Engine.
 
 ## Features
 
@@ -20,7 +20,7 @@ Got any great ideas we can add to the Slack App? If so [Raise a issue here](http
 
 ## Install the app
 
-See the [Install Guide](https://jenkins-x.io/v3/develop/ui/slack/#creating-the-slack-app)
+See the [Install Guide](https://jayex.io/v3/develop/ui/slack/#creating-the-slack-app)
 
 ## Development
 
@@ -29,4 +29,4 @@ The slack app was developed against a cluster using Helm 3, for faster iteration
 ./build-deploy.sh
 ```
 
-_Note_ this is just for testing as it does not integrate with Jenkins X GitOps
+_Note_ this is just for testing as it does not integrate with JayeX GitOps

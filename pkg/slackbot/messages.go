@@ -254,7 +254,7 @@ func (o *Options) createReviewersMessage(activity *jenkinsv1.PipelineActivity, n
 			r := &pr.Reviewers[i]
 			u, err := resolver.Resolve(r)
 			if err != nil {
-				return nil, nil, nil, fmt.Errorf("resolving %s user %s as Jenkins X user: %w",
+				return nil, nil, nil, fmt.Errorf("resolving %s user %s as JayeX user: %w",
 					resolver.GitProviderKey(), r.Login, err)
 
 			}

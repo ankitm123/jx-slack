@@ -15,7 +15,7 @@ func NewCmdRun() *cobra.Command {
 
 	var cmd = &cobra.Command{
 		Use:   "run",
-		Short: "Run the Jenkins X slack bot",
+		Short: "Run the JayeX slack bot",
 		Long:  ``,
 		Run: func(_ *cobra.Command, _ []string) {
 			err := o.Run()
