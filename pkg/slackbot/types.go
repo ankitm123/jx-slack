@@ -10,6 +10,7 @@ import (
 	"k8s.io/client-go/kubernetes"
 )
 
+// SlackOptions contains environment-driven configuration for the slack bot.
 type SlackOptions struct {
 	Dir           string `env:"GIT_DIR"`
 	SlackToken    string `env:"SLACK_TOKEN"`
@@ -20,6 +21,7 @@ type SlackOptions struct {
 	FakeTimestamp string
 }
 
+// MessageFormat controls which fields are shown in slack messages.
 type MessageFormat struct {
 	DashboardURL     string
 	ShowRepository   bool
@@ -29,7 +31,7 @@ type MessageFormat struct {
 	ShowSteps        bool
 }
 
-// SlackBotOptions contains options for the SlackBot
+// Options contains options for the SlackBot.
 type Options struct {
 	SlackOptions
 	MessageFormat     MessageFormat
@@ -45,6 +47,7 @@ type Options struct {
 	CommandRunner     cmdrunner.CommandRunner
 }
 
+// Statuses holds the configured slack status for each pipeline state.
 type Statuses struct {
 	Succeeded     *Status `json:"succeeded,omitempty" protobuf:"bytes,1,name=succeeded"`
 	Failed        *Status `json:"failed,omitempty" protobuf:"bytes,2,name=failed"`
@@ -62,11 +65,13 @@ type Statuses struct {
 	Closed        *Status `json:"closed,omitempty" protobuf:"bytes,14,name=closed"` // Closed means the PR is closed but not merged
 }
 
+// Status represents an emoji and text pair for a pipeline state.
 type Status struct {
 	Emoji string `json:"emoji,omitempty" protobuf:"bytes,1,name=emoji"`
 	Text  string `json:"text,omitempty" protobuf:"bytes,2,name=text"`
 }
 
+// MessageReference holds the channel and timestamp of a posted slack message.
 type MessageReference struct {
 	ChannelID string
 	Timestamp string

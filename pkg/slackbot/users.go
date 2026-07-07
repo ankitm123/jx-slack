@@ -85,7 +85,7 @@ func (r *SlackUserResolver) getSlackEmailFromMapping(gitUserEmail, fileLocation 
 	}
 
 	if len(r.UserMappings) == 0 {
-		f, err := os.Open(fileLocation)
+		f, err := os.Open(fileLocation) //nolint:gosec
 		if err != nil {
 			return "", fmt.Errorf("failed to read file %s", fileLocation)
 		}

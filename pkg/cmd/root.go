@@ -1,3 +1,4 @@
+// Package cmd contains the jx-slack CLI commands.
 package cmd
 
 import (
@@ -5,11 +6,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// SlackAppOptions contains options for the root slack app command.
 type SlackAppOptions struct {
 	Cmd  *cobra.Command
 	Args []string
 }
 
+// NewCmdRoot creates the root cobra command for jx-slack.
 func NewCmdRoot() *cobra.Command {
 	var options = &SlackAppOptions{}
 
@@ -28,6 +31,7 @@ func NewCmdRoot() *cobra.Command {
 	return rootCmd
 }
 
+// Run executes the root command, showing help.
 func (o *SlackAppOptions) Run() error {
 	return o.Cmd.Help()
 }

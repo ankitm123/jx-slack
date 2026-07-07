@@ -29,6 +29,7 @@ import (
 	"github.com/slack-go/slack"
 )
 
+// PipelineMessage sends a slack message for a pipeline activity event.
 func (o *Options) PipelineMessage(activity *jenkinsv1.PipelineActivity) error {
 	if activity.Name == "" {
 		return fmt.Errorf("PipelineActivity name cannot be empty")
@@ -65,7 +66,7 @@ func (o *Options) PipelineMessage(activity *jenkinsv1.PipelineActivity) error {
 		if pullRequest != nil {
 			id, err := o.resolveGitUserToSlackUser(&pullRequest.Author, resolver)
 			if err != nil {
-				return fmt.Errorf("Cannot resolve Slack ID for Git user %s: %w", pullRequest.Author.Name, err)
+				return fmt.Errorf("cannot resolve Slack ID for Git user %s: %w", pullRequest.Author.Name, err)
 			}
 			if id != "" {
 				err = o.postMessage(id, true, pipelineMessageType, activity, nil, options, createIfMissing)
@@ -96,6 +97,7 @@ func (o *Options) getSlackConfigForPipeline(activity *jenkinsv1.PipelineActivity
 	return slack
 }
 
+// ReviewRequestMessage sends a slack message for a pull request review request.
 func (o *Options) ReviewRequestMessage(activity *jenkinsv1.PipelineActivity) error {
 	if activity.Name == "" {
 		return fmt.Errorf("PipelineActivity name cannot be empty")
@@ -662,7 +664,7 @@ func (o *Options) createStageAttachments(activity *jenkinsv1.PipelineActivity,
 	attachments := []slack.Attachment{
 		o.createStepAttachment(&stage.CoreActivityStep, name, "", ""),
 	}
-	if stage.CoreActivityStep.Name != "meta pipeline" {
+	if stage.Name != "meta pipeline" {
 		for k := range stage.Steps {
 			step := stage.Steps[k]
 			// filter out tekton generated steps
@@ -803,6 +805,7 @@ func repositoryName(act *jenkinsv1.PipelineActivity) string {
 	return link(details.GitOwner, ownerURL) + "/" + link(details.GitRepository, gitURL)
 }
 
+// PipelineDetails holds git and build metadata for a pipeline.
 type PipelineDetails struct {
 	GitOwner      string
 	GitRepository string

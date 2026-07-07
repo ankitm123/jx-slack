@@ -160,7 +160,7 @@ func TestSlackBotOptions_createAttachments(t *testing.T) {
 
 func getPipelineActivity(filename string) (*jenkinsv1.PipelineActivity, error) {
 	testData := path.Join("test_data", "bot")
-	testfile, err := os.ReadFile(path.Join(testData, filename))
+	testfile, err := os.ReadFile(path.Join(testData, filename)) //nolint:gosec
 	if err != nil {
 		return nil, fmt.Errorf("failed to read file %s: %w", path.Join(testData, filename), err)
 	}

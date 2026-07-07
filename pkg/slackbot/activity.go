@@ -1,3 +1,4 @@
+// Package slackbot implements the jenkins-x slack bot logic.
 package slackbot
 
 import (
