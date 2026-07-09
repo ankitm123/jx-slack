@@ -20,7 +20,7 @@ const (
 	userMappingfile = "/secrets/users/mapping.txt"
 )
 
-// SlackUserResolver allows slack users to be converted to Jenkins X users
+// SlackUserResolver allows slack users to be converted to JayeX users
 type SlackUserResolver struct {
 	SlackClient  slacker.Interface
 	JXClient     jenkninsv1client.Interface
@@ -85,7 +85,7 @@ func (r *SlackUserResolver) getSlackEmailFromMapping(gitUserEmail, fileLocation 
 	}
 
 	if len(r.UserMappings) == 0 {
-		f, err := os.Open(fileLocation)
+		f, err := os.Open(fileLocation) //nolint:gosec
 		if err != nil {
 			return "", fmt.Errorf("failed to read file %s", fileLocation)
 		}

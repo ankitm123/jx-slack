@@ -1,3 +1,4 @@
+// Package fakeslack provides an in-memory fake slack client for testing.
 package fakeslack
 
 import (
@@ -21,12 +22,14 @@ type FakeSlack struct {
 	Messages     map[string][]Message
 }
 
+// Message records a slack message sent to a channel.
 type Message struct {
 	Channel   string
 	Timestamp string
 	Options   []slack.MsgOption
 }
 
+// Attachment represents a slack message attachment for test assertions.
 type Attachment struct {
 	Color      string   `json:"color,omitempty"`
 	Fallback   string   `json:"fallback,omitempty"`
@@ -36,6 +39,7 @@ type Attachment struct {
 	Timestamp  int      `json:"ts,omitempty"`
 }
 
+// Action represents a slack attachment action for test assertions.
 type Action struct {
 	Name string `json:"name,omitempty"`
 	Text string `json:"text,omitempty"`
@@ -48,10 +52,12 @@ func NewFakeSlack() *FakeSlack {
 	return &FakeSlack{}
 }
 
+// OpenConversation implements slacker.Interface for testing.
 func (f *FakeSlack) OpenConversation(_ *slack.OpenConversationParameters) (*slack.Channel, bool, bool, error) {
 	return nil, false, false, nil
 }
 
+// SendMessage implements slacker.Interface for testing, recording messages in memory.
 func (f *FakeSlack) SendMessage(channel string, options ...slack.MsgOption) (string, string, string, error) {
 	if f.Messages == nil {
 		f.Messages = map[string][]Message{}
@@ -68,6 +74,7 @@ func (f *FakeSlack) SendMessage(channel string, options ...slack.MsgOption) (str
 	return channel, timestamp, "", nil
 }
 
+// GetUserByEmail implements slacker.Interface for testing.
 func (f *FakeSlack) GetUserByEmail(email string) (*slack.User, error) {
 	if f.UsersByEmail == nil {
 		f.UsersByEmail = map[string]*slack.User{}

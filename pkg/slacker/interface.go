@@ -1,3 +1,4 @@
+// Package slacker defines the Slack client interface.
 package slacker
 
 import (

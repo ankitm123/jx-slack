@@ -1,1 +1,1 @@
-# Slack application for Jenkins X
+# Slack application for JayeX

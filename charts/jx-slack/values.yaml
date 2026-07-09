@@ -16,7 +16,7 @@ podAnnotations: {
 affinity: {}
 
 secrets:
-  # if installing outside of Jenkins X then you can supply a token value here
+  # if installing outside of JayeX then you can supply a token value here
   # usually this is populated via external secrets via 'jx secret edit -f jx-slack' though
   token: ""
 

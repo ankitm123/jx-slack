@@ -101,6 +101,7 @@ func (o *Options) Validate() error {
 	return nil
 }
 
+// Run starts the slack bot and begins processing pipeline events.
 func (o *Options) Run() error {
 	defer runtime.HandleCrash()
 

@@ -1,3 +1,4 @@
+// Package testpipelines provides test pipeline helpers.
 package testpipelines
 
 import (

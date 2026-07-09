@@ -36,6 +36,7 @@ func marshallBeforeAfter(before, after interface{}) ([]byte, []byte, error) {
 	return rawBefore, rawAfter, nil
 }
 
+// CreatePatch creates a JSON patch between two objects.
 func CreatePatch(before, after interface{}) (JSONPatch, error) {
 	rawBefore, rawAfter, err := marshallBeforeAfter(before, after)
 	if err != nil {
@@ -44,8 +45,10 @@ func CreatePatch(before, after interface{}) (JSONPatch, error) {
 	return jsonpatch.CreatePatch(rawBefore, rawAfter)
 }
 
+// JSONPatch is a slice of JSON patch operations.
 type JSONPatch []jsonpatch.JsonPatchOperation
 
+// MarshalJSON serializes the patch as a JSON array.
 func (p JSONPatch) MarshalJSON() ([]byte, error) {
 	return json.Marshal([]jsonpatch.JsonPatchOperation(p))
 }

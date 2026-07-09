@@ -10,12 +10,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// NewCmdRun creates the run subcommand that starts the slack bot.
 func NewCmdRun() *cobra.Command {
 	var o = &slackbot.Options{}
 
 	var cmd = &cobra.Command{
 		Use:   "run",
-		Short: "Run the Jenkins X slack bot",
+		Short: "Run the JayeX slack bot",
 		Long:  ``,
 		Run: func(_ *cobra.Command, _ []string) {
 			err := o.Run()
